@@ -1,0 +1,1880 @@
+<script src="/bundles/jquery?v=FVs3ACwOLIVInrAl5sdzR2jrCDmVOWFbZMY6g6Q0ulE1"></script>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <title>阿拉伯数字</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+        <!-- External CSS libraries -->
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-submenu.css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="/css/leaflet.css" type="text/css">
+<link rel="stylesheet" href="/css/map.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="/fonts/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" type="text/css" href="/fonts/linearicons/style.css">
+<link rel="stylesheet" type="text/css" href="/css/jquery.mCustomScrollbar.css">
+<link rel="stylesheet" type="text/css" href="/css/dropzone.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css">
+
+<!-- Custom stylesheet -->
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" id="style_sheet" href="/css/skins/default.css">
+<link rel="stylesheet" type="text/css" id="style_sheet" href="/css/skins/yellow.css">
+<!-- Favicon icon -->
+<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+<!-- Google fonts -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPlayfair+Display:400,700%7CRoboto:100,300,400,400i,500,700">
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<link rel="stylesheet" type="text/css" href="css/ie10-viewport-bug-workaround.css">
+<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+<!--[if lt IE 9]><script type="text/javascript" src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+<script type="text/javascript" src="js/ie-emulation-modes-warning.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script type="text/javascript" src="js/html5shiv.min.js"></script>
+<script type="text/javascript" src="js/respond.min.js"></script>
+<![endif]-->
+
+<style>
+    body {
+        font-family: "Proxima","Helvetica Neue",Arial,sans-serif;
+    }
+    .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+        font-family: "Proxima","Helvetica Neue",Arial,sans-serif;
+    }
+</style>
+
+
+    <link rel="stylesheet" type="text/css" href="/css/slick.css" />
+
+    <link rel="stylesheet" type="text/css" href="/css/slick-theme.css" />
+    <style>
+        .slick-dots li {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+        .campaign-widget-wide {
+            position: relative;
+            background-color: #FFFFFF;
+            border-radius: 3px;
+            border: 1px solid #DBDCDD !important;
+            border-radius: 12px;
+            min-height: 1px !important;
+            margin: 20px 5px 60px 5px !important;
+            box-shadow: 0 1px 3px 0 rgba(28,29,30,0.27);
+        }
+
+        .campaign-widget-wide {
+            position: relative;
+            background-color: #ffffff;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.13);
+            min-height: 370px;
+            overflow: hidden;
+            margin: 0 5px;
+        }
+
+        @media (max-width: 768px) {
+            .campaign-widget-wide {
+                margin: 0px -10px 60px -10px !important;
+                /*jason margin: 20px -15px 0 -15px !important;*/
+            }
+        }
+        /*
+                    .row {
+                        margin-left: -7px;
+                        margin-right: -7px;
+                    }
+                    */
+        *:not(input) {
+            outline: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        .campaign-widget-wide.ongoing:before {
+            background: #f2bb23;
+        }
+
+        .ongoing:before {
+            background-color: #14b9d6 !important;
+        }
+
+        .campaign-widget-wide:before {
+            /* Jason
+                    content: "";
+                    position: absolute;
+                    top: -52px;
+                    right: -52px;
+                    height: 104px;
+                    width: 104px;
+                    border: 0;
+                    transform: rotate(45deg);
+                    z-index: 888;
+                    */
+        }
+
+        .campaign-widget-wide.ongoing .corner-icon img {
+            width: 30px !important;
+        }
+
+        .campaign-widget-wide .corner-icon {
+            display: block;
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            height: 30px;
+            width: 30px;
+            border: 0;
+            color: #ffffff;
+            z-index: 999;
+        }
+
+        .campaign-widget-wide .image {
+            /*jasonmin-height: 350px;*/
+            background: 50% 50% no-repeat;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -o-crisp-edges;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode: nearest-neighbor;
+            padding: 0;
+            /*jasonborder-radius: 3px 0 0 3px;*/
+        }
+
+        .campaign-widget-wide .category {
+            position: absolute;
+            top: 25px;
+            left: 20px;
+            z-index: 2;
+            background: rgba(48,57,72,0.4);
+            background: #fcd21d;
+            background-color: #2b4566;
+            border-radius: 2px; /*jason 2
+                    border: 1px solid #FFFFFF !important;*/
+            padding: 5px 7px !Important;
+        }
+
+        .campaign-widget-wide .category-title {
+            /* jason color: #FFFFFF !important; */
+            font-size: 12px !important;
+            float: left;
+            /*color: #555;*/
+            background-color: #2b4566;
+        }
+
+
+
+        .campaign-widget-wide .description .title span a {
+            font-weight: 500 !important;
+            font-size: 20px !important; /*Jason*/
+            color: #383838 !important;
+        }
+
+        .campaign-widget-wide .description .title span a {
+            color: #1c2229;
+        }
+
+        .campaign-widget-wide .description .author {
+            margin-bottom: 7px; /*Jason*/
+        }
+
+        .campaign-widget-wide .description .author {
+            margin-top: 7px;
+        }
+
+        .flex-container.justify-between {
+            -ms-flex-pack: justify;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+        }
+
+        .flex-container {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+
+        .campaign-widget-wide .description .author span a, .campaign-widget-wide .description .author span {
+            font-size: 12px !important;
+            color: #6B6D6F !important;
+            letter-spacing: 0 !important;
+            line-height: 16px !important;
+        }
+
+        .campaign-widget-wide .description .author span {
+            color: #999999;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 20px;
+        }
+
+        .ldate {
+            font-size: 15px;
+            color: #383838;
+            margin-bottom: 7px;
+            margin-top: 7px;
+            font-weight: 700 !important;
+        }
+
+            .ldate .laun {
+                font-size: 12px;
+                color: #6B6D6F;
+                letter-spacing: 0;
+                line-height: 16px;
+                display: block;
+                font-weight: 400 !important;
+            }
+
+        .campaign-widget-wide .description .text {
+            font-weight: 300 !important;
+            font-size: 14px !important;
+            color: #383838 !important;
+            letter-spacing: -0.35px !important;
+            line-height: 21px !important;
+        }
+
+        .campaign-widget-wide .description .text {
+            margin: 5px 0;
+            color: #353d40;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+        }
+
+        .campaign-widget-wide .description .stats {
+            /*jasonpadding-top: 25px !important;*/
+        }
+
+
+
+            .campaign-widget-wide .description .stats .goal {
+                margin: 7px 0 -5px 0 !important;
+            }
+
+        .flex-container.justify-between {
+            -ms-flex-pack: justify;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+        }
+
+        .flex-container {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .campaign-widget-wide .description .stats .goal-percent {
+            padding-bottom: 0px; /*jason 6*/
+        }
+
+        .campaign-widget-wide .description .stats .goal-percent {
+            margin: 0 0 0px 0; /*jason 0050*/
+        }
+
+        .goal .endsat, .goal .goal-percent {
+            font-size: 15px;
+            color: #383838;
+            font-weight: 700;
+        }
+
+        .campaign-widget-wide .description .stats .progress {
+            height: 3px;
+            margin: 5px 0 0px; /*jason 5px 0    height changed to 0*/
+            /*background-color: #5cb85c; #f1f0f0;*/
+            border-radius: 0;
+            position: relative;
+        }
+
+
+        .campaign-widget-wide .description .stats .goal span.current {
+            color: #353d40;
+            font-family: "Arial Narrow", Arial, sans-serif;
+        }
+
+        .campaign-widget-wide .currency-widget {
+            font-size: 15px !important;
+            color: #383838 !important;
+        }
+
+        .currency-widget {
+            font-weight: 500 !important; /*jason 700*/
+        }
+
+        .currency-widget {
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 24px;
+        }
+
+        .campaign-widget-wide .currency-widget .icon {
+            margin-left: -7px !important;
+        }
+
+        .currency-widget .icon {
+            display: block;
+            float: left;
+        }
+
+        .goal .backers {
+            font-size: 15px;
+            color: #383838;
+            font-weight: 700;
+        }
+
+        .campaign-widget-wide .description .stats .goal span.total {
+            color: #e47d32;
+        }
+
+        .campaign-widget-wide .description .stats .info-label span {
+            font-size: 12px !important;
+        }
+
+        .campaign-widget-wide .description .stats .info-label span {
+            font-size: 14px;
+            color: #999999;
+            line-height: 20px;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+
+        .campaign-widget-wide .currency-widget .icon svg {
+            height: 15px !important;
+            margin-top: 5px !important;
+        }
+    </style>
+
+    
+<script type="text/javascript" src="/js/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap-submenu.js"></script>
+<script type="text/javascript" src="/js/rangeslider.js"></script>
+<script type="text/javascript" src="/js/jquery.mb.YTPlayer.js"></script>
+<script type="text/javascript" src="/js/wow.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/js/jquery.scrollUp.js"></script>
+<script type="text/javascript" src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript" src="/js/leaflet.js"></script>
+<script type="text/javascript" src="/js/leaflet-providers.js"></script>
+<script type="text/javascript" src="/js/leaflet.markercluster.js"></script>
+<script type="text/javascript" src="/js/dropzone.js"></script>
+<script type="text/javascript" src="/js/maps.js"></script>
+<script type="text/javascript" src="/js/app.js"></script>
+<script type="text/javascript" src="/Content/Scripts/arabicnumerals.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script type="text/javascript" src="/js/ie10-viewport-bug-workaround.js"></script>
+<!-- Custom javascript -->
+<script type="text/javascript" src="/js/ie10-viewport-bug-workaround.js"></script>
+<script type="text/javascript">
+
+
+
+
+
+    $(document).ready(function () {
+
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            $('head meta[name=viewport]').remove();
+            $('head').prepend('<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />');
+        }
+
+
+
+
+
+
+    });
+</script>
+
+    <style>
+        .showit:hover {
+            border: 1px solid; /*#DBDCDD;*/
+        }
+    </style>
+</head>
+<body>
+    <!--<div class="page_loader"></div>-->
+
+
+    
+    <!-- Main header start -->
+<header class="main-header">
+    <div class="container">
+        <nav class="navbar navbar-default">
+
+
+            <!--
+    <div style="float:left;width:33.33333%">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navigation" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div style="float:left;width:33.33333%">
+        <a href="/" id="logo" class="logo" style="padding:0px;float:left;width:33.33333%">
+            <img src="/img/logos/green-light-logo.png" alt="logo">
+        </a>
+    </div>
+    <div style="float:left;width:33.33333%">
+        <a href="/account/login" class="search-button mobile-sign-in" style="font-weight:400;font-size:12px;text-transform:none;width:inherit;margin-top:15px;padding:5px 10px;">登陆</a>
+
+    </div>
+        -->
+
+
+
+
+
+            <div class="navbar-header">
+
+
+                <div style="float:left;width:33.33333%">
+
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navigation" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+                <a href="/" id="logo" class="logo" style="padding:0px;float:left;width:33.33333%">
+                    <img src="/img/logos/green-light-logo.png" alt="logo">
+                </a>
+
+                <div class="mobile-sign-in" style="float:left;width:33.33333%;text-align:right;padding-top:20px;">
+        <div style="width:22px;height:14px;"></div>
+
+
+
+                </div>
+
+
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/property/" id="aa">房产</a>
+                    </li>
+                    <li>
+                        <a href="/project/">餐饮</a>
+                    </li>
+                    <li>
+                        <a href="/home/howitworks">如何运行</a>
+                    </li>
+
+                    <li>
+                        <a href="/home/about">关于我们</a>
+                    </li>
+                    <li>
+                        <a href="/home/contact">联系我们</a>
+                    </li>
+
+
+                                    <li class="dropdown">
+                    <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                        Jason1 Huang<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" style="border:1px solid #DBDCDD">
+
+                        <li><a href="#">余额: $3849.91 </a></li>
+                        <li><a href="/property/fund">充值您的帐户</a></li>
+                        <li><a href="/property/withdraw">提取资金</a></li>
+                        <li><a href="/property/dashboard">我的帐户</a></li>
+                        <li><a href="/account/myprofile">个人资料</a></li>
+                        <li><a href="/account/logout">登出</a></li>
+
+                    </ul>
+                </li>
+
+
+                    <li id="selectpicker" style="margin-top:12px;">
+                        <select class="selectpicker" data-width="fit">
+                            <option value="en-US" data-lang="en-US" data-content='<span class="flag-icon flag-icon-us"></span> English'>English</option>
+                            <option value="zh-cn" data-lang="zh-cn" data-content='<span class="flag-icon flag-icon-cn"></span> 中文'>中文</option>
+                        </select>
+                    </li>
+
+
+
+
+
+
+                </ul>
+                <div style="width:1px;height:0px;margin:0px;padding:0px;"><a href="#" id="forfocus"></a></div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <!-- /.navbar-collapse -->
+            <!-- /.container -->
+        </nav>
+    </div>
+</header>
+<div style="height:56px;"></div>
+<!-- Main header end -->
+
+
+
+
+    <!-- Banner start
+    <div class="slidersize1">
+        <div>asdf</div>
+        <div>asdfasdfsdf</div>
+    </div>-->
+
+
+
+
+        <div class="banner text-center" style="background-color:#c73451;margin:0 0px 0 0px; ">
+            <div class="slidersize">
+                <div>
+                    <div class="banner-slider-inner banner-top-align slider1" style="background-color:#c73451;padding:30px 10%;color: #FFF; text-shadow: 1px 1px 0 rgba(0, 0, 0, .75);letter-spacing: 2px;
+    font-weight: 100;font-family: 'Proxima','Helvetica Neue',Arial,sans-serif;">
+
+                        <h1 data-animation="" class="slider1t"><img src="/img/logoword.png" style="width:280px;" /></h1>
+                        <p data-animation="" class="slider1p"><br /> </p>
+                        <a href="#" class="glyphicon glyphicon-triangle-right button-md button-theme" data-toggle="modal" data-target="#myModal" data-animation="" style="padding: 10px 26px;"></a>
+
+                    </div>
+                </div>
+                <div class="slide22" style="display:none">
+                    <div class="banner-slider-inner banner-top-align slider2" style="padding:30px 10%;color: #FFF; text-shadow: 1px 1px 0 rgba(0, 0, 0, .75);letter-spacing: 2px;
+    font-weight: 100;font-family: 'Proxima','Helvetica Neue',Arial,sans-serif;">
+
+                        <h1 data-animation=""><span>科技改变未来，让投资更简单</span></h1>
+                        <p data-animation="" class="slider1p">阿拉伯数字</p>
+                        <a href="#" class="glyphicon glyphicon-triangle-right button-md button-theme slider2p" data-toggle="modal" data-target="#myModal" data-animation="" style="padding: 10px 26px;"></a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="search-area hidden-xs">
+                <div class="search-area-inner">
+                    <div class="search-contents show-search-area" style="padding-top:10px;">
+                        <div class="row inactive">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                                <div class="form-group">
+                                    <select class="selectpicker search-fields">
+                                        <option>Area</option>
+                                        <option>1000</option>
+                                        <option>800</option>
+                                        <option>600</option>
+                                        <option>400</option>
+                                        <option>200</option>
+                                        <option>200</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                                <div class="form-group">
+                                    <select class="selectpicker search-fields">
+                                        <option>Property Status</option>
+                                        <option>For Sale</option>
+                                        <option>For Rent</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                                <div class="form-group">
+                                    <select class="selectpicker search-fields">
+                                        <option>Property Types</option>
+                                        <option>Apartments</option>
+                                        <option>Houses</option>
+                                        <option>Commercial</option>
+                                        <option>Garages</option>
+                                        <option>Lots</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                                <div class="form-group">
+                                    <select class="selectpicker search-fields" data-live-search="true" data-live-search-placeholder="Search value">
+                                        <option>Location</option>
+                                        <option>United States</option>
+                                        <option>United Kingdom</option>
+                                        <option>American Samoa</option>
+                                        <option>Belgium</option>
+                                        <option>Cameroon</option>
+                                        <option>Canada</option>
+                                        <option>Delaware</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-9 col-md-9 col-sm-6 col-xs-6">
+                                <div class="form-group" style="margin-bottom:10px;">
+                                    <input class="search-fields" id="signupemail" data-live-search="true" data-live-search-placeholder="Search value" style="width:100%">
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                                <div class="form-group" style="margin-bottom:10px;">
+                                    <button class="search-button" id="signup">注册</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <!-- Banner end -->
+        <div class="clearfix text-center" style="background-color:#F1F1F1;padding:12px 5px 2px 5px;font-size:12px;margin:0 0px 0 0px; ">
+            <p style="color:#949494;font-weight:300">资本风险：投资前请阅读<a href="/home/keyrisks" style="color:#666A71;text-decoration:underline">主要风险提示</a></p>
+
+        </div>
+
+        <!-- Search Section end -->
+        <!-- Recent properties start -->
+        <div class="recent-properties" style="padding-top:50px; padding-bottom:10px;">
+            <div class="container">
+                <!-- Main title -->
+                <div class="main-title" style="margin-bottom:0px;">
+                    <h1 style="margin-bottom:0px;">  上新项目 <br /></h1>
+                    <div class="border inactive">
+                        <div class="border-inner">共享成就我们更多可能</div>
+                    </div>
+                    <p style="font-size:14px;">共享成就我们更多可能</p>
+                </div>
+
+
+
+
+
+
+
+
+
+                
+    <div class="cardheader" style="font-weight:300;color: #999999;font-size:12px;margin-bottom:10px;">
+        <img src="/img/properties/5a945097379cc65b581d5163.jpg" alt="Avatar" style="width:35px" class="titlecircle">
+        <span style="margin-left:10px;">阿美-N001</span>
+
+
+    </div>
+    <div class="formobile" style="height:58px;border: 1px solid #DBDCDD !important;box-shadow: 0 1px 3px 0 rgba(0,0,0,0.13);    margin: 0px -9px -1px -9px; text-align:center; padding:17px 0 12px">
+        <span class="">
+
+            <a id="propertylink" href="/property/detail/5a945097379cc65b581d5163">
+                188 Irvine Blvd, Irvine, CA 92618
+            </a>
+
+        </span>
+    </div>
+    <div class="row campaign-widget-wide fadeInUp delay-03s">
+
+        <div class="category">
+            <span class="category-title">
+                仅作演示
+            </span>
+        </div>
+
+        <a href="/property/detail/5a945097379cc65b581d5163" title="188 Irvine Blvd, Irvine, CA 92618">
+            <div class="image col-sm-5 col-md-5" style='background-image: url(/img/properties/5a945097379cc65b581d5163.jpg'>
+            </div>
+        </a>
+
+        <div class="description wholecard col-sm-7 col-md-7">
+
+            <div class="title end mobileonly">
+                <span>
+                    <a href="/property/detail/5a945097379cc65b581d5163">
+                        188 Irvine Blvd, Irvine, CA 92618
+                    </a>
+                </span>
+            </div>
+
+
+            <div class="currency-widget cardcenter" style="padding:12px 0 8px;font-size:14px;">
+
+                <span class="cardcenter" style="font-size:13px;">
+
+                    <!--<b>永久地契</b> | 独栋房屋 -->
+                     2000 平方呎  |  3房2卫
+                </span>
+            </div>
+            <hr class="ruler">
+
+
+
+            <div class="currency-widget cardcenter" style="padding:2px 0;">
+
+                <span class="">
+
+                    <p class="margin-b-0">$578,000</p><p class="card-bottom">购买价格</p>
+
+                </span>
+            </div>
+
+
+            <!--
+        <div class="text">
+            Single House | 2000 sq.ft. | 3Br 2Ba
+        </div>
+
+        <div class="author flex-container justify-between">
+            <span>
+                By <a href="#">Arabic Numerals</a>
+            </span>
+        </div>
+
+        <div class="ldate">
+            <p class="countdown"></p>
+
+
+        </div>-->
+            <hr class="ruler">
+
+            <div class="currency-widget cardcenter" style="padding:2px 0;">
+
+                <span class="">
+
+                    <p class="margin-b-0">$307,900</p><p class="card-bottom">资金目标</p>
+
+                </span>
+            </div>
+
+            <hr class="ruler">
+            
+            <span class="cardcenter">
+                <div class="currency-widget" style="padding:2px 0;">
+
+                    <span class="">
+
+                        <p class="margin-b-0">5.72%</p><p class="card-bottom">租金收益率</p>
+
+                    </span>
+                </div>
+            </span>
+
+            <div class="stats">
+                <hr class="ruler">
+                <div class="goal flex-container justify-between">
+                    <div class="progress" style="">
+                        <div class="bar-step" style="left: 50%;">
+                            <div class="label-percent" style="display: none;"><span class="mdi-check-circle-outline mdi"></span>Soft cap</div>
+                            <div class="label-line"></div>
+                        </div>
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100" style="width: 93%">
+                            <span class="sr-only">66% Complete</span>
+                        </div>
+                    </div>
+                    <span class="card-bottom current">93% </span>
+                </div>
+                <!--original progress location-->
+                <div class="goal flex-container justify-between">
+                    <span class="current">
+                        <div class="currency-widget">
+
+                            <span class="">
+                                <!--$307,900<br /><p class="card-bottom">资金目标</p>-->
+                                <span class="card-bottom">认筹金额: </span> $285662.1
+                            </span>
+                        </div>
+                    </span>
+
+                    <span class="current">
+                        <div class="currency-widget">
+
+                            <span class="">
+                                <!--$285662.1<br /><p class="card-bottom">认筹金额</p>-->
+                            </span>
+                        </div>
+                    </span>
+
+
+                    <span class="current">
+                        <div class="currency-widget">
+
+                            <span class="" style="text-align:right;">
+
+                                <!--<p class="margin-b-0">2.70%</p><p class="card-bottom">股息收益率</p>-->
+                                <span class="card-bottom">剩余天数: </span><span class="margin-b-0 countdown"></span><!--<p class="card-bottom"></p>-->
+                            </span>
+                        </div>
+                    </span>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+        <div class="corner-icon inactive">
+            <!--<img src="./images/icon-ongoing.svg" width="20">-->
+        </div>
+        <div class="corner-text flex-container end center inactive">
+            <!--<span>Ongoing</span>-->
+        </div>
+
+
+    </div>
+
+
+
+
+    <div class="cardheader" style="font-weight:300;color: #999999;font-size:12px;margin-bottom:10px;">
+        <img src="/img/project/5ac3e73e379cc66d1841fda0-8.jpg" alt="Avatar" style="width:35px" class="titlecircle">
+        <span style="margin-left:10px;">阿美-R001</span>
+
+
+    </div>
+    <div class="row campaign-widget-wide ongoing wow fadeInUp delay-03s">
+
+        <div class="category">
+            <span class="category-title">
+                仅作演示
+            </span>
+        </div>
+
+        <a href="#">
+            <!--/project/detail/5ac3e73e379cc66d1841fda0-->
+            <div class="image col-sm-5 col-md-5" style='background-image: url(/img/project/5ac3e73e379cc66d1841fda0-8.jpg'>
+            </div>
+        </a>
+
+        <div class="description col-sm-7 col-md-7  projectcoming" style="padding-top:40px; text-align:center;vertical-align:central;background:url(/img/popular-places/comming_bg.png) no-repeat;background-size:     cover;background-position: center center;">
+            <div class="mobileonly" style="height:30px;"></div>
+            <img src="/img/project/pig.png" width="48" />
+            <div style="height:0px;"></div>
+            <div style="color:#2b4566;font-size:16px;font-weight:600;margin:5px;">熊猫猪蹄</div>
+            <div class="card-bottom" style="font-size:14px;margin:5px;"><b>即将进入洛城</b></div>
+            <div class="card-bottom" style="width:200px;margin:auto;text-align:left">
+                <ul>
+                    <li>地点：尔湾</li>
+                    <li>预测五年回报：100%+</li>
+                    <li>预测年度股息收益率：15%+</li>
+                </ul>
+            </div>
+            <div style="height:20px;"></div>
+            <a href="/home/contact" class="comming-button" style="font-weight:600;color:#2b4566;font-size:12px;text-transform:none;width:inherit;margin-top:15px;padding:10px 35%;">我感兴趣</a>
+
+            <!--
+             <div class="title flex-container end">
+                 <span>
+                     <a href="/campaigns/51872/flogmall-an-international-e-commerce-site">
+                         熊猫猪蹄
+                     </a>
+                 </span>
+             </div>
+            -->
+            <!--description
+                    <span class="cardcenter">
+                        <div class="currency-widget">
+
+                            <span class="">
+
+                                <a href="/campaigns/51872/flogmall-an-international-e-commerce-site">
+                                    熊猫猪蹄
+                                </a>
+
+                            </span>
+                        </div>
+                    </span>
+
+                    <div class="cardspacer"></div>
+                    <hr class="ruler">
+            -->
+            <!--
+            <div class="author flex-container justify-between">
+                <span>
+                    By <a href="#">Arabic Numerals</a>
+                </span>
+            </div>
+            <div class="ldate">
+                <p class="countdown"></p>
+
+            </div>
+                -->
+            <!--description
+
+                <span class="cardcenter">
+                    <div class="currency-widget">
+
+                        <span class="">
+
+                            <p class="margin-b-0">$350000</p><p class="card-bottom">资金目标</p>
+
+                        </span>
+                    </div>
+                </span>
+                <div class="cardspacer"></div>
+                <hr class="ruler">
+                <div class="text">
+                    熊猫猪蹄
+                </div>
+                <div class="stats">
+                    <hr class="ruler">
+                    <div class="goal flex-container justify-between">
+
+                        <div class="progress" style="width:90%">
+                            <div class="bar-step" style="left: 50%;">
+                                <div class="label-percent" style="display: none;"><span class="mdi-check-circle-outline mdi"></span>Soft cap</div>
+                                <div class="label-line"></div>
+                            </div>
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="13" aria-valuemin="0" aria-valuemax="100" style="width: 13%">
+                                <span class="sr-only">13% Complete</span>
+                            </div>
+                        </div>
+
+
+                        <span class="goal-percent">13%</span>
+                    </div>
+            -->
+            <!--
+            <div class="progress">
+                <div class="bar-step" style="left: 50%;">
+                    <div class="label-percent" style="display: none;"><span class="mdi-check-circle-outline mdi"></span>Soft cap</div>
+                    <div class="label-line"></div>
+                </div>
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="13" aria-valuemin="0" aria-valuemax="100" style="width: 13%">
+                    <span class="sr-only">13% Complete</span>
+                </div>
+            </div>
+                -->
+            <!--description
+
+            <div class="goal flex-container justify-between">
+                <span class="current">
+                    <div class="currency-widget">
+
+                        <span class="">
+                            $45040<br /><p class="card-bottom">已经筹得</p>
+                        </span>
+                    </div>
+                </span>
+
+                <span class="current">
+                    <div class="currency-widget">
+
+                        <span class="inactive">
+                            13<br /><p class="card-bottom">支持人数</p>
+                </span>
+            </div>
+                    </span>
+
+
+                    <span class="">
+                        <div class="currency-widget">
+
+                            <span class="" style="text-align:right;">
+
+                                <p class="margin-b-0">0</p><p class="card-bottom">剩余天数</p>
+
+                            </span>
+                        </div>
+                    </span>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+            </div>-->
+        </div>
+        <div class="corner-icon">
+            <!--<img src="./images/icon-ongoing.svg" width="20">-->
+        </div>
+        <div class="corner-text flex-container end center">
+            <!--<span>Ongoing</span>-->
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+        <!-- Recent properties end -->
+        <!-- Section-1 start -->
+
+        <div class="section-1 looking-for formobile" style="padding-top: 0px;">
+            <div class="container">
+                <!-- Main title -->
+                <div class="main-title">
+                    <h1>如何投资<br /><br /></h1>
+                    <div class="border inactive">
+                        <div class="border-inner"></div>
+                    </div>
+                    <p></p>
+                </div>
+                <div class="row mgn-btm wow">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInLeft delay-04s icard showit">
+                        <div class="content">
+                            <i class="flaticon-internet"></i>
+                            <h4>投资于房地产</h4>
+                            <p class="inactive">选择您喜欢的房产，购买其中的份额。您每季度都可以获得净租金收入。</p>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInLeft delay-04s">
+                        <div class="content">
+                            <i class="flaticon-symbol-1"></i>
+                            <h4>赚取租金收入</h4>
+                            <p>您每个月都可以获得净租金收入。</p>
+                        </div>
+                    </div>
+                        -->
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInRight delay-04s icard showit">
+                        <div class="content">
+                            <i class="glyphicon glyphicon-cutlery"></i>
+                            <h4>投资于餐饮项目</h4>
+                            <p class="inactive">投资你喜欢的餐饮项目，购买其中的份额。您每个月可获得分红。</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInRight delay-04s icard showit">
+                        <div class="content">
+                            <i class="flaticon-monitor"></i>
+                            <h4>跟踪投资</h4>
+                            <p class="inactive">资产评估师对每个资产三个月评估一次，您可以在仪表盘上查看您的投资价值。</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInRight delay-04s icard showit">
+                        <div class="content">
+                            <i class="flaticon-symbol-1"></i>
+                            <h4>出售您的投资</h4>
+                            <p class="inactive">二至五年退出保护计划，<br>收益是你的。</p>
+                        </div>
+                    </div>
+                </div>
+                <!--<a href="/account/signup" class="btn button-md button-theme">注册</a>-->
+            </div>
+        </div>
+
+
+
+        <div class="section-1 looking-for mobileonly" style="padding-top: 0px;">
+            <div class="container">
+                <!-- Main title -->
+                <div class="main-title">
+                    <h1>如何投资<br /><br /></h1>
+                    <div class="border inactive">
+                        <div class="border-inner"></div>
+                    </div>
+                    <p></p>
+                </div>
+                <div class="row mgn-btm wow">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInLeft delay-04s">
+                        <div class="content">
+                            <i class="flaticon-internet"></i>
+                            <h4>投资于房地产</h4>
+                            <p>选择您喜欢的房产，购买其中的份额。您每季度都可以获得净租金收入。</p>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInLeft delay-04s">
+                        <div class="content">
+                            <i class="flaticon-symbol-1"></i>
+                            <h4>赚取租金收入</h4>
+                            <p>您每个月都可以获得净租金收入。</p>
+                        </div>
+                    </div>
+                        -->
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInRight delay-04s">
+                        <div class="content">
+                            <i class="glyphicon glyphicon-cutlery"></i>
+                            <h4>投资于餐饮项目</h4>
+                            <p>投资你喜欢的餐饮项目，购买其中的份额。您每个月可获得分红。</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInRight delay-04s">
+                        <div class="content">
+                            <i class="flaticon-monitor"></i>
+                            <h4>跟踪投资</h4>
+                            <p>资产评估师对每个资产三个月评估一次，您可以在仪表盘上查看您的投资价值。</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInRight delay-04s">
+                        <div class="content">
+                            <i class="flaticon-symbol-1"></i>
+                            <h4>出售您的投资</h4>
+                            <p>二至五年退出保护计划，<br>收益是你的。</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="/account/signup" class="btn button-md button-theme">注册</a>
+            </div>
+        </div>
+        <!-- Section-1 end -->
+        <!-- Categories strat -->
+        <div class="categories">
+            <div class="container">
+                <!-- Main title -->
+                <div class="main-title">
+                    <h1 style="margin-bottom:0px;">多个类别项目发起</h1>
+                    <div class="border inactive">
+                        <div class="border-inner"></div>
+                    </div>
+                    <p style="font-size:14px;">(即将上线)</p>
+                </div>
+                <div class="row wow">
+                    <div class="col-lg-12 col-md-12 col-sm-12 multiclass">
+                        <div class="row">
+                            <div class="col-sm-3 wow fadeInLeft delay-04s edgezero">
+                                <div class="category">
+
+
+                                    <div class="category_bg_box cat-1-bg">
+                                        <div class="category-overlay">
+                                            <span class="category-content">
+
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!--
+
+    <div class="category" style="border:1px solid #DBDCDD;box-shadow: 0 1px 1px 0 rgba(0,0,0,0.13);">
+
+        <div class="category_bg_box cat-1-bg" style="height:200px"></div>
+        <div style="height:70px"></div>
+
+
+    </div>
+
+
+        -->
+                            </div>
+                            <div class="col-sm-3 wow fadeInLeft delay-04s edgezero">
+                                <div class="category">
+                                    <div class="category_bg_box cat-2-bg">
+                                        <div class="category-overlay">
+                                            <span class="category-content">
+                                                <!--
+                                                <span class="category-title">精品民宿</span><br>
+                                                <span class="category-subtitle"></span>
+                                                <br>
+                                                <a href="#" class="btn button-md button-theme">Coming Soon</a>
+                                                -->
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 wow fadeInUp delay-04s edgezero">
+                                <div class="category">
+                                    <div class="category_bg_box cat-3-bg">
+                                        <div class="category-overlay">
+                                            <span class="category-content">
+                                                <!--
+                                                <span class="category-title">地产开发</span><br>
+                                                <span class="category-subtitle"></span>
+                                                <br>
+                                                <a href="#" class="btn button-md button-theme">Coming Soon</a>
+                                                -->
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3 wow fadeInUp delay-04s edgezero">
+                                <div class="category">
+                                    <div class="category_bg_box cat-4-bg">
+                                        <div class="category-overlay">
+                                            <span class="category-content">
+                                                <!--
+                                                <span class="category-title">品味生活</span><br>
+                                                <span class="category-subtitle">1 Properties</span>
+                                                <br>
+                                                <a href="/project" class="btn button-md button-theme">View All</a>
+                                                -->
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Categories end-->
+
+
+            <!-- Footer start -->
+<style>
+    .imagehover:hover {
+        opacity: 0.3;
+    }
+</style>
+
+<footer class="main-footer clearfix formobile mobilefooter " style="margin:0 0px 0px 0px;padding:55px 0 25px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footer-item" style="margin-bottom:20px;">
+                <div class="footer-item-content">
+                    <div class="showfooter" style="text-align:center;">
+                        <img src="/img/logo.png" class="imagehover" width="30" />
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- paragraph
+                    <p class="inactive" style="font-size:10px;line-height:20px;margin-right:20px;margin-top:10px;">资本面临风险，您投资的价值有可能会下降。但是您账户中持有的股份受到保护，Arabic Numerals不能保证您在特定的时间能收回全部的投资金额。预测不是未来可靠的指标，总租金，股息和资本增长可能低于您的预期。Arabic Numerals不提供税务或投资建议，我们可以提供数据分析以帮助您做出明智的决定。建议客户在必要时获取税收或法律建议。</p>-->
+                </div>
+            </div>
+
+
+
+            <div class="col-md-3 col-sm-6 footer-item clearfix">
+                <div class="footer-item-content">
+                    <div class="newsletterxxx">
+                        <div style="text-align:center; margin-bottom:30px;">
+                            <img src="/img/logoword.png" style="width:200px;" />
+                        </div>
+                        <div class="social-list" style="text-align:center">
+
+
+
+                            <a href="javascript:showdisclaimer()" target="_blank">
+                                <image src="/img/disclaimer1.png" style="width:35px;height:35px;">
+                            </a>
+
+
+                            <a href="https://facebook.com/Arabic-numerals-294020334676528" target="_blank" style="margin-left:5px;">
+                                <image src="/img/facebook.png" style="width:35px;height:35px;">
+                            </a>
+
+
+                            <a href="https://www.instagram.com/arabic_numerals/?hl=en" target="_blank" style="margin-left:5px;">
+                                <image src="/img/instagram.png" style="width:35px;height:35px;">
+                            </a>
+
+
+                            <a href="javascript:showlinks()" target="_blank" style="margin-left:5px;">
+                                <image src="/img/link.png" style="width:35px;height:35px;">
+                            </a>
+
+                            <a href="javascript:showcontact()" target="_blank" style="margin-left:5px;">
+                                <image src="/img/help.png" style="width:35px;height:35px;">
+                            </a>
+
+
+
+                            <!--
+                            <a href="http://instagram.com/envato" target="_blank" class="instegram-bg">
+                                <i class="fa fa-instagram"></i>
+                            </a>-->
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!--
+                        <form action="#" method="post">
+                            <p>
+                                <input class="nsu-field btn-block" id="nsu-email-0" type="text" name="email" placeholder="Enter your Email Address" required="">
+                            </p>
+
+                            <p>
+                                <button type="submit" class="button-sm button-theme btn-block">Signup</button>
+
+                            </p>
+                        </form>
+                        -->
+                        <!-- / Newsletter Sign-Up -->
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="helpfullinks" class="col-md-2 col-sm-6 footer-item clearfix inactive">
+                <div class="footer-item-content">
+                    <div class="inactive" style="text-align:center">
+                        <h2 class="title">链接</h2>
+                    </div>
+                    <div class="mlink formobile">
+                        <div style="width:50%;float:left;"><a href="/property/">房产项目</a></div>
+                        <div style="width:50%;float:left;"><a href="/project/">餐饮项目</a></div>
+                        <div style="width:50%;float:left;"><a href="/home/howitworks/">如何运行</a></div>
+                        <div style="width:50%;float:left;"><a href="/home/about">关于我们</a></div>
+                        <div style="width:50%;float:left;"><a href="/home/contact">联系我们</a></div>
+                        <div style="width:50%;float:left;"><a href="/home/keyrisks">主要风险</a></div>
+                        <div style="width:50%;float:left;"><a href="/home/whatwedo">我们做的</a></div>
+                        <div style="width:50%;float:left;"><a href="/home/environmentisolation">投资隔离</a></div>
+                    </div>
+
+
+
+                    <ul class="links mobileonly">
+                        <li>
+                            <a href="/property/">房产项目</a>
+                        </li>
+                        <li>
+                            <a href="/project/">餐饮项目</a>
+                        </li>
+                        <li>
+                            <a href="/home/howitworks/">如何运行</a>
+                        </li>
+                        <li>
+                            <a href="/home/about">关于我们</a>
+                        </li>
+                        <li>
+                            <a href="/home/contact">联系我们</a>
+                        </li>
+
+                        <li>
+                            <a href="/home/keyrisks">主要风险</a>
+                        </li>
+                        <li>
+                            <a href="/home/whatwedo">我们做的</a>
+                        </li>
+                        <li>
+                            <a href="/home/environmentisolation">投资隔离</a>
+                        </li>
+
+
+
+                    </ul>
+                </div>
+            </div>
+
+
+            <div id="helpcenter" class="col-md-3 col-sm-6 footer-item inactive">
+                <div class="footer-item-content">
+                    <h2 class="inactive title">联系我们</h2>
+                    <!-- Contact Info -->
+                    <ul class="contact-info">
+                        <li class="clearfix">
+                            <i class="fa fa-map-marker fa-lg"></i>
+                            <label>3333 Michelson Drive, Suite 300, Irvine, CA 92612</label>
+                        </li>
+                        <li class="clearfix">
+                            <i class="fa fa-mobile fa-lg"></i>
+                            <label>中国: 400-065-5795 美国: 949-668-0500</label>
+                        </li>
+                        <li class="clearfix">
+                            <i class="fa fa-envelope-o fa-lg"></i>
+                            <label>
+                                <a href="mailto:中国: 400-065-5795 美国: 949-668-0500">support@anumerals.com</a>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <div id="disclaimer" class="col-md-3 col-sm-6 footer-item inactive">
+                <div class="footer-item-content">
+                    <p class="" style="font-size:10px;line-height:20px;margin-right:20px;margin-top:10px;">资本面临风险，您投资的价值有可能会下降。但是您账户中持有的股份受到保护，Arabic Numerals不能保证您在特定的时间能收回全部的投资金额。预测不是未来可靠的指标，总租金，股息和资本增长可能低于您的预期。Arabic Numerals不提供税务或投资建议，我们可以提供数据分析以帮助您做出明智的决定。建议客户在必要时获取税收或法律建议。</p>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</footer>
+
+
+
+<footer class="main-footer clearfix mobileonly" style="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footer-item">
+                <div class="footer-item-content">
+                    <h2 class="title">声明</h2>
+                    <div class="clearfix"></div>
+                    <!-- paragraph -->
+                    <p style="font-size:10px;line-height:20px;margin-right:20px;">资本面临风险，您投资的价值有可能会下降。但是您账户中持有的股份受到保护，Arabic Numerals不能保证您在特定的时间能收回全部的投资金额。预测不是未来可靠的指标，总租金，股息和资本增长可能低于您的预期。Arabic Numerals不提供税务或投资建议，我们可以提供数据分析以帮助您做出明智的决定。建议客户在必要时获取税收或法律建议。</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 footer-item mobileonly">
+                <div class="footer-item-content">
+                    <h2 class="title">联系我们</h2>
+                    <!-- Contact Info -->
+                    <ul class="contact-info">
+                        <li class="clearfix">
+                            <i class="fa fa-map-marker fa-lg"></i>
+                            <label>3333 Michelson Drive, Suite 300, Irvine, CA 92612</label>
+                        </li>
+                        <li class="clearfix">
+                            <i class="fa fa-mobile fa-lg"></i>
+                            <label>中国: 400-065-5795 美国: 949-668-0500</label>
+                        </li>
+                        <li class="clearfix">
+                            <i class="fa fa-envelope-o fa-lg"></i>
+                            <label>
+                                <a href="mailto:中国: 400-065-5795 美国: 949-668-0500">support@anumerals.com</a>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-6 footer-item clearfix">
+                <div class="footer-item-content">
+                    <h2 class="title">链接</h2>
+
+                    <div class="mlink formobile">
+                        <div style="width:50%;float:left;"><a href="/property/">房产项目</a></div>
+                        <div style="width:50%;float:left;"><a href="/project/">餐饮项目</a></div>
+                        <div style="width:50%;float:left;"><a href="/home/howitworks/">如何运行</a></div>
+                        <div style="width:50%;float:left;"><a href="/home/about">关于我们</a></div>
+                        <div style="width:50%;float:left;"><a href="/home/contact">联系我们</a></div>
+                        <div style="width:50%;float:left;"><a href="/home/keyrisks">主要风险</a></div>
+                        <div style="width:50%;float:left;"><a href="/home/whatwedo">我们做的</a></div>
+                        <div style="width:50%;float:left;"><a href="/home/environmentisolation">投资隔离</a></div>
+                    </div>
+
+
+
+                    <ul class="links mobileonly">
+                        <li>
+                            <a href="/property/">房产项目</a>
+                        </li>
+                        <li>
+                            <a href="/project/">餐饮项目</a>
+                        </li>
+                        <li>
+                            <a href="/home/howitworks/">如何运行</a>
+                        </li>
+                        <li>
+                            <a href="/home/about">关于我们</a>
+                        </li>
+                        <li>
+                            <a href="/home/contact">联系我们</a>
+                        </li>
+
+                        <li>
+                            <a href="/home/keyrisks">主要风险</a>
+                        </li>
+                        <li>
+                            <a href="/home/whatwedo">我们做的</a>
+                        </li>
+                        <li>
+                            <a href="/home/environmentisolation">投资隔离</a>
+                        </li>
+                            <!--
+                            <li><a href="/property/fund">充值您的帐户</a></li>
+                            <li><a href="/property/withdraw">提取资金</a></li>
+                            <li><a href="/property/dashboard">我的帐户</a></li>
+                            <li><a href="/account/myprofile">个人资料</a></li>
+                            <li><a href="/account/logout">登出</a></li>
+                            -->
+
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-4 footer-item clearfix inactive">
+                <h4>Follow us</h4>
+                <div class="social-link white flex-container start">
+                    <a class="facebook right-space-5" href="https://www.facebook.com/Kickico-1909910745919239" target="_blank">
+                        <i class="mdi mdi-36px mdi-facebook-box bg-white"></i>
+                    </a>
+                    <a class="twitter right-space-5" href="https://twitter.com/KICKICOplatform" target="_blank">
+                        <i class="mdi mdi-36px mdi-twitter-box bg-white"></i>
+                    </a>
+                    <a class="linkedin right-space-10" href="https://www.linkedin.com/company-beta/11199886/" target="_blank">
+                        <i class="mdi mdi-36px mdi-linkedin-box bg-white"></i>
+                    </a>
+                    <a class="telegramm right-space-15" href="https://t.me/kickico" target="_blank">
+                        <i class="mdi mdi-36px mdi-telegram bg-white"></i>
+                    </a>
+                    <a class="medium right-space-15" href="https://medium.com/kickico" target="_blank">
+                        <i class="mdi mdi-36px mdi-medium bg-white"></i>
+                    </a>
+                    <a class="reddit" href="https://www.reddit.com/r/KICKICO_Platform" target="_blank">
+                        <i class="mdi mdi-36px mdi-reddit bg-white"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 footer-item clearfix">
+                <div class="footer-item-content">
+                    <div class="newsletterxxx">
+                        <h2 class="title">关注我们</h2>
+
+
+                        <div class="social-list">
+
+
+                            <a href="http://facebook.com/Arabic-numerals-294020334676528" target="_blank">
+                                <image src="/img/facebook.png" style="width:35px;height:35px;">
+                            </a>
+
+                            <a href="http://instagram.com/arabic_numerals/?hl=en" target="_blank">
+                                <image src="/img/instagram.png" style="width:35px;height:35px;">
+                            </a>
+
+
+
+
+
+                            <!--
+                            <a href="http://instagram.com/envato" target="_blank" class="instegram-bg">
+                                <i class="fa fa-instagram"></i>
+                            </a>-->
+
+
+
+                        </div>
+                        <!--
+                                                <form action="#" method="post">
+                                                    <p>
+                                                        <input class="nsu-field btn-block" id="nsu-email-0" type="text" name="email" placeholder="Enter your Email Address" required="">
+                                                    </p>
+
+                                                    <p>
+                                                        <button type="submit" class="button-sm button-theme btn-block">Signup</button>
+
+                                                    </p>
+                                                </form>
+                                                -->
+                        <!-- / Newsletter Sign-Up -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer end-->
+<!-- Sub footer start -->
+
+<div class="sub-footer mobileonly" style="padding:10px 0px;">
+    <div class="container">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="copy-right">
+                &copy;  2017 <a href="https://anumerals.com/">Arabic Numerals</a>. All rights reserved.
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="sub-footer formobile" style="padding:10px 0px;">
+    <div class="container">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="copy-right">
+                &copy;  2017 <a href="https://anumerals.com/">Arabic Numerals</a>. All rights reserved.
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function showlinks() {
+        $('#helpfullinks').toggleClass('inactive');
+        if (!$('#helpcenter').hasClass('inactive')) {
+            $('#helpcenter').toggleClass('inactive');
+        }
+        if (!$('#disclaimer').hasClass('inactive')) {
+            $('#disclaimer').toggleClass('inactive');
+        }
+    }
+
+    function showcontact() {
+        $('#helpcenter').toggleClass('inactive');
+        if (!$('#helpfullinks').hasClass('inactive')) {
+            $('#helpfullinks').toggleClass('inactive');
+        }
+        if (!$('#disclaimer').hasClass('inactive')) {
+            $('#disclaimer').toggleClass('inactive');
+        }
+    }
+
+    function showdisclaimer() {
+        $('#disclaimer').toggleClass('inactive');
+        if (!$('#helpfullinks').hasClass('inactive')) {
+            $('#helpfullinks').toggleClass('inactive');
+        }
+        if (!$('#helpcenter').hasClass('inactive')) {
+            $('#helpcenter').toggleClass('inactive');
+        }
+    }
+
+    $(document).ready(function () {
+
+
+
+        $('.showfooter').click(function (e) {
+
+            $(this).parent().children('p').toggleClass('inactive');
+
+            e.preventDefault();
+            //alert("a");
+        });
+
+
+        //$("#myiframe").attr("src", "/property/detail/5a945097379cc65b581d5163");
+    });
+</script>
+<!-- Sub footer end -->
+
+
+
+        <script>
+            // Set the date we're counting down to
+            var countDownDate = new Date("Jun 5, 2018 15:37:25").getTime();
+
+            // Update the count down every 1 second
+            var x = setInterval(function () {
+
+                // Get todays date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now an the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the element with id="demo"
+                $('.countdown').html(days + "天 " + hours + "小时 "
+                    + minutes + "分 " + seconds + "秒 ");
+
+                if (seconds == 0 && minutes == 0 && hours == 0 && days != 0) {
+                    $('.countdown').html(days + 1);
+                } else {
+                    $('.countdown').html(days);
+                }
+                // If the count down is finished, write some text
+                if (distance < 0) {
+                    clearInterval(x);
+                    $('.countdown').html("0");
+
+                }
+            }, 1000);
+        </script>
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+
+            <div class="styles_modal__gNwvD"><h2>Big modal</h2>
+            
+                                             <iframe id="myiframe" src="" allowfullscreen="" frameborder="0" height="0" width="0"></iframe>
+            
+            <p>Mauris ac arcu sit amet dui interdum bibendum a sed diam. Praesent rhoncus congue ipsum elementum lobortis. Ut ligula purus, ultrices id condimentum quis, tincidunt quis purus. Proin quis enim metus. Nunc feugiat odio at eros porta, ut rhoncus lorem tristique. Nunc et ipsum eu ex vulputate consectetur vel eu nisi. Donec ultricies rutrum lectus, sit ame feugiat est semper vitae. Proin varius imperdiet consequat. Proin eu metus nisi. In hac habitasse platea dictumst. Vestibulum ac ultrices risus. Pellentesque arcu sapien, aliquet sed orci sit amet, pulvinar interdum velit. Nunc a rhoncus ipsum, maximus fermentum dolor. Praesent aliquet justo vitae rutrum volutpat. Ut quis pulvinar est.</p><p>Mauris ac arcu sit amet dui interdum bibendum a sed diam. Praesent rhoncus congue ipsum elementum lobortis. Ut ligula purus, ultrices id condimentum quis, tincidunt quis purus. Proin quis enim metus. Nunc feugiat odio at eros porta, ut rhoncus lorem tristique. Nunc et ipsum eu ex vulputate consectetur vel eu nisi. Donec ultricies rutrum lectus, sit ame feugiat est semper vitae. Proin varius imperdiet consequat. Proin eu metus nisi. In hac habitasse platea dictumst. Vestibulum ac ultrices risus. Pellentesque arcu sapien, aliquet sed orci sit amet, pulvinar interdum velit. Nunc a rhoncus ipsum, maximus fermentum dolor. Praesent aliquet justo vitae rutrum volutpat. Ut quis pulvinar est.</p><p>Mauris ac arcu sit amet dui interdum bibendum a sed diam. Praesent rhoncus congue ipsum elementum lobortis. Ut ligula purus, ultrices id condimentum quis, tincidunt quis purus. Proin quis enim metus. Nunc feugiat odio at eros porta, ut rhoncus lorem tristique. Nunc et ipsum eu ex vulputate consectetur vel eu nisi. Donec ultricies rutrum lectus, sit ame feugiat est semper vitae. Proin varius imperdiet consequat. Proin eu metus nisi. In hac habitasse platea dictumst. Vestibulum ac ultrices risus. Pellentesque arcu sapien, aliquet sed orci sit amet, pulvinar interdum velit. Nunc a rhoncus ipsum, maximus fermentum dolor. Praesent aliquet justo vitae rutrum volutpat. Ut quis pulvinar est.</p><p>Mauris ac arcu sit amet dui interdum bibendum a sed diam. Praesent rhoncus congue ipsum elementum lobortis. Ut ligula purus, ultrices id condimentum quis, tincidunt quis purus. Proin quis enim metus. Nunc feugiat odio at eros porta, ut rhoncus lorem tristique. Nunc et ipsum eu ex vulputate consectetur vel eu nisi. Donec ultricies rutrum lectus, sit ame feugiat est semper vitae. Proin varius imperdiet consequat. Proin eu metus nisi. In hac habitasse platea dictumst. Vestibulum ac ultrices risus. Pellentesque arcu sapien, aliquet sed orci sit amet, pulvinar interdum velit. Nunc a rhoncus ipsum, maximus fermentum dolor. Praesent aliquet justo vitae rutrum volutpat. Ut quis pulvinar est.</p><p>Mauris ac arcu sit amet dui interdum bibendum a sed diam. Praesent rhoncus congue ipsum elementum lobortis. Ut ligula purus, ultrices id condimentum quis, tincidunt quis purus. Proin quis enim metus. Nunc feugiat odio at eros porta, ut rhoncus lorem tristique. Nunc et ipsum eu ex vulputate consectetur vel eu nisi. Donec ultricies rutrum lectus, sit ame feugiat est semper vitae. Proin varius imperdiet consequat. Proin eu metus nisi. In hac habitasse platea dictumst. Vestibulum ac ultrices risus. Pellentesque arcu sapien, aliquet sed orci sit amet, pulvinar interdum velit. Nunc a rhoncus ipsum, maximus fermentum dolor. Praesent aliquet justo vitae rutrum volutpat. Ut quis pulvinar est.</p><p>Mauris ac arcu sit amet dui interdum bibendum a sed diam. Praesent rhoncus congue ipsum elementum lobortis. Ut ligula purus, ultrices id condimentum quis, tincidunt quis purus. Proin quis enim metus. Nunc feugiat odio at eros porta, ut rhoncus lorem tristique. Nunc et ipsum eu ex vulputate consectetur vel eu nisi. Donec ultricies rutrum lectus, sit ame feugiat est semper vitae. Proin varius imperdiet consequat. Proin eu metus nisi. In hac habitasse platea dictumst. Vestibulum ac ultrices risus. Pellentesque arcu sapien, aliquet sed orci sit amet, pulvinar interdum velit. Nunc a rhoncus ipsum, maximus fermentum dolor. Praesent aliquet justo vitae rutrum volutpat. Ut quis pulvinar est.</p><button class="styles_closeButton__20ID4"><svg class="styles_closeIcon__1QwbI" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 36 36"><path d="M28.5 9.62L26.38 7.5 18 15.88 9.62 7.5 7.5 9.62 15.88 18 7.5 26.38l2.12 2.12L18 20.12l8.38 8.38 2.12-2.12L20.12 18z"></path></svg></button></div>
+
+
+
+
+        </div><!-- /.modal -->
+
+
+        <script type="text/javascript">
+
+
+
+            $(document).ready(function () {
+
+                //jssor_1_slider_init();
+                $('.slide22').show();
+                $('.slidersize').slick({
+                    dots: true,
+                    arrows: false
+
+                });
+                //banner-slider-inner banner-top-align
+
+                $('#signup').click(function (e) {
+                    pid = $('#signupemail').val();
+                    //alert(pid);
+
+                    window.location.href = "/account/signup";
+
+
+
+                    e.preventDefault();
+                });
+
+
+                $('.wholecard').click(function (e) {
+                    //alert ($(this).children('a').attr("href"));
+                    $('#propertylink').get(0).click();
+                    //window.location = $('#propertylink').find('a').attr("href");
+                    //$('#propertylink').find('a').simulate();
+                    e.preventDefault();
+                    //alert("a");
+                });
+
+                $('.showit').click(function (e) {
+
+                    $(this).children().children('p').toggleClass('inactive');
+                    
+                    e.preventDefault();
+                    //alert("a");
+                });
+
+                $('.showit').bind('touchstart', function () {
+                    $(this).css('border', '1px solid');
+                });
+
+                $('.showit').bind('touchend', function () {
+                    $(this).css('border', 'none');
+                });
+
+
+                //$("#myiframe").attr("src", "/property/detail/5a945097379cc65b581d5163");
+            });
+        </script>
+
+        <script type="text/javascript" src="/js/slick.min.js"></script>
+
+</body>
+<!-- Mirrored from real-house-dot-themeforest-171208.appspot.com/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 Mar 2018 17:36:47 GMT -->
+</html>
+
+
+<script>
+    $(document).ready(function () {
+
+        var lang = ArabicNumerals.Cookies.getCookie("LangForArabicNumerals");
+
+        //$('.selectpicker').selectpicker();
+        //alert(lang);
+        //alert($("li[data-original-index='" + 1 + "']").html());
+        if (lang == "zh-cn") {
+            $("li[data-original-index='" + 1 + "'] a").click();
+            
+        } else {
+
+            $("li[data-original-index='" + 0 + "'] a").click();
+            
+        }
+
+
+        $(".setLang[data-lang='" + lang + "'] img").addClass("active-lang");
+        //$("#selectpicker").val(lang);
+        $(".setLang").on("click", function (event) {
+            var lang = $(this).attr("data-lang");
+            ArabicNumerals.Cookies.setCookie("LangForArabicNumerals", lang, 30);
+            location.reload(true);
+        });
+        $("li[data-original-index='" + 1 + "'] a").on("click", function (event) {
+
+            ArabicNumerals.Cookies.setCookie("LangForArabicNumerals", "zh-cn", 30);
+            location.reload(true);
+        });
+        $("li[data-original-index='" + 0 + "'] a").on("click", function (event) {
+
+            ArabicNumerals.Cookies.setCookie("LangForArabicNumerals", "en-US", 30);
+            location.reload(true);
+        });
+
+        
+        $('#forfocus').focus();
+    });
+</script>
